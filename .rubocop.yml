@@ -5,6 +5,8 @@ AllCops:
     - Guardfile
     - Rakefile
     - Thorfile
+  Exclude:
+    - Vagrantfile.rb
 
 # This must be disabled for compatibility with knife-cookbook-doc.
 Style/LeadingCommentSpace:
