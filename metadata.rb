@@ -11,4 +11,4 @@ supports 'freebsd', '~> 10.1'
 
 recipe 'bsdznc::default', 'Setup the FreeBSD ZNC server.'
 
-depends 'cafe-core', '~> 0.0.0'
+depends 'cafe-core', '~> 0.0.1'

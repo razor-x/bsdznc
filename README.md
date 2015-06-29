@@ -20,6 +20,10 @@ Include the default recipe.
 
 * Freebsd (~> 10.1)
 
+### Cookbooks:
+
+* cafe-core (~> 0.0.1)
+
 ## Recipes
 
 * bsdznc::default - Setup the FreeBSD ZNC server.
