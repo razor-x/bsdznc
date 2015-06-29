@@ -6,6 +6,10 @@ driver:
 
 provisioner:
   name: chef_zero
+  attributes:
+    authorization:
+      sudo:
+        users: [vagrant]
 
 platforms:
   - name: freebsd-10.1
