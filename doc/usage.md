@@ -1,3 +1,3 @@
 ### Usage
 
-replace_usage.
+Include the default recipe.

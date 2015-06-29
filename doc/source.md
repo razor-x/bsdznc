@@ -1,9 +1,9 @@
 ### Source Code
 
-The [replace_cookbook source](https://github.com/replace_username/replace_repo)
+The [bsdznc source](https://github.com/rxrc/bsdznc)
 is hosted on GitHub.
 To clone the project run
 
 ```bash
-$ git clone https://github.com/replace_username/replace_repo.git
+$ git clone https://github.com/rxrc/bsdznc.git
 ```

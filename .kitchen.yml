@@ -9,9 +9,9 @@ provisioner:
   chef_omnibus_install_options: -d /tmp/vagrant-cache/vagrant_omnibus
 
 platforms:
-  - name: ubuntu-14.04
+  - name: freebsd-10.1
 
 suites:
   - name: default
     run_list:
-      - recipe[replace_cookbook::default]
+      - recipe[bsdznc::default]
