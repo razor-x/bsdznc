@@ -27,6 +27,16 @@ action :create do
   package 'znc' do
     action :install
   end
+
+  user 'znc' do
+    system true
+    action :create
+  end
+
+  group 'znc' do
+    system true
+    action :create
+  end
 end
 
 action :start do
@@ -37,6 +47,14 @@ end
 
 action :destroy do
   package 'znc' do
+    action :remove
+  end
+
+  user 'znc' do
+    action :remove
+  end
+
+  group 'znc' do
     action :remove
   end
 end
