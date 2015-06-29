@@ -36,4 +36,7 @@ action :stop do
 end
 
 action :destroy do
+  package 'znc' do
+    action :remove
+  end
 end

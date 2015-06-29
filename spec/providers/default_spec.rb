@@ -30,4 +30,8 @@ describe 'bsdznc_test::destroy' do
     ChefSpec::ServerRunner.new(step_into: ['bsdznc'])
       .converge(described_recipe)
   end
+
+  it 'removes znc' do
+    expect(chef_run).to remove_package('znc')
+  end
 end
