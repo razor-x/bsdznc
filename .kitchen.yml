@@ -6,11 +6,12 @@ driver:
 
 provisioner:
   name: chef_zero
-  chef_omnibus_install_options: -d /tmp/vagrant-cache/vagrant_omnibus
 
 platforms:
   - name: freebsd-10.1
     driver:
+      vagrantfiles:
+        - Vagrantfile.rb
       ssh:
         shell: '"/bin/sh"'
 
