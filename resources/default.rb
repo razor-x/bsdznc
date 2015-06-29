@@ -30,5 +30,6 @@
 =end
 
 default_action :create
+actions :create, :start, :stop, :destroy
 
 attribute :name, kind_of: String, required: true, name_attribute: true

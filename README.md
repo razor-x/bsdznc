@@ -40,7 +40,10 @@ Include the default recipe.
 #### Actions
 
 - create: create and start the znc server. Default action.
+- destroy: destroy the znc server.
 - nothing: do nothing.
+- start: start the znc server.
+- stop: stop the znc server.
 
 #### Attribute Parameters
 

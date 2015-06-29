@@ -28,3 +28,12 @@ action :create do
     action :install
   end
 end
+
+action :start do
+end
+
+action :stop do
+end
+
+action :destroy do
+end
