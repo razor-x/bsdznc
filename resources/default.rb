@@ -1,6 +1,7 @@
+
 #
 # Cookbook Name:: bsdznc
-# Recipe:: default
+# Resource:: default
 #
 # Copyright 2015 Evan Sosenko
 #
@@ -17,9 +18,17 @@
 # limitations under the License.
 #
 
-# TODO: Remove this override when this issue is resolved:
-# https://github.com/gmiranda23/ntp/issues/112
-node.default['ntp']['var_owner'] = 'root'
+=begin
+#<
+@action create create and start the znc server.
+@action start start the znc server.
+@action stop stop the znc server.
+@action destroy destroy the znc server.
+@action nothing do nothing.
+@attribute name the name of the znc server.
+#>
+=end
 
-include_recipe 'cafe-core::default'
-include_recipe 'bsdznc::znc'
+default_action :create
+
+attribute :name, kind_of: String, required: true, name_attribute: true

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: bsdznc
-# Recipe:: default
+# Recipe:: znc
 #
 # Copyright 2015 Evan Sosenko
 #
@@ -17,9 +17,6 @@
 # limitations under the License.
 #
 
-# TODO: Remove this override when this issue is resolved:
-# https://github.com/gmiranda23/ntp/issues/112
-node.default['ntp']['var_owner'] = 'root'
-
-include_recipe 'cafe-core::default'
-include_recipe 'bsdznc::znc'
+bsdznc 'default' do
+  action :create
+end

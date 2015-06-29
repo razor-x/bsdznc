@@ -6,10 +6,6 @@ driver:
 
 provisioner:
   name: chef_zero
-  attributes:
-    authorization:
-      sudo:
-        users: [vagrant]
 
 platforms:
   - name: freebsd-10.1
@@ -21,5 +17,13 @@ platforms:
 
 suites:
   - name: default
+    attributes:
+      authorization:
+        sudo:
+          users: [vagrant]
     run_list:
       - recipe[bsdznc::default]
+
+  - name: znc
+    run_list:
+      - recipe[bsdznc::znc]

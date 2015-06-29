@@ -14,4 +14,8 @@ describe 'bsdznc::default' do
   it 'includes the cafe-core::default recipe' do
     expect(chef_run).to include_recipe('cafe-core::default')
   end
+
+  it 'includes the bsdznc::znc recipe' do
+    expect(chef_run).to include_recipe('bsdznc::znc')
+  end
 end

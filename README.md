@@ -26,7 +26,25 @@ Include the default recipe.
 
 ## Recipes
 
-* bsdznc::default - Setup the FreeBSD ZNC server.
+* bsdznc::default - Setup the FreeBSD ZNC server with core services.
+* bsdznc::znc - Setup the FreeBSD ZNC server.
+
+## Resources
+
+* [bsdznc](#bsdznc)
+
+### bsdznc
+
+
+
+#### Actions
+
+- create: create and start the znc server. Default action.
+- nothing: do nothing.
+
+#### Attribute Parameters
+
+- name: the name of the znc server.
 
 ## Development and Testing
 
@@ -50,6 +68,7 @@ rake doc                          # Build documentation
 rake foodcritic                   # Lint Chef cookbooks
 rake kitchen:all                  # Run all test instances
 rake kitchen:default-freebsd-101  # Run default-freebsd-101 test instance
+rake kitchen:znc-freebsd-101      # Run znc-freebsd-101 test instance
 rake readme                       # Generate README.md from _README.md.erb
 rake rubocop                      # Run RuboCop
 rake rubocop:auto_correct         # Auto-correct RuboCop offenses
