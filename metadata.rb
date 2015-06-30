@@ -5,7 +5,7 @@ license          'Apache 2.0'
 description      'FreeBSD ZNC server.'
 source_url       'https://github.com/rxrc/bsdznc'
 issues_url       'https://github.com/rxrc/bsdznc/issues'
-version          '0.0.0'
+version          '0.0.1'
 
 supports 'freebsd', '~> 10.1'
 
