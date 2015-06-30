@@ -69,7 +69,6 @@ Attribute | Description | Default | Choices
 `node['bsdznc']['gid']` | `` | "194" |
 `node['bsdznc']['znc_version']` | `` | "1.6.0" |
 `node['bsdznc']['config_path']` | `` | "/usr/local/etc/znc" |
-`node['bsdznc']['cert_path']` | `` | "/usr/local/etc/znc" |
 `node['bsdznc']['cert_file']` | `` | "znc.pem" |
 `node['bsdznc']['irc_port']` | `` | "194" |
 `node['bsdznc']['web_port']` | `` | "443" |
