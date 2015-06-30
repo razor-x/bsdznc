@@ -24,6 +24,8 @@ end
 use_inline_resources
 
 action :create do
+  run_context.include_recipe 'sysctl'
+
   package 'znc' do
     action :install
   end
@@ -61,9 +63,6 @@ action :create do
     end
   end
 
-  # TODO: All of the sysctl configuration below should be refactored.
-  # See https://github.com/svanzoest-cookbooks/sysctl.
-
   directory '/etc/rc.conf.d' do
     user 'root'
     group 'wheel'
@@ -83,33 +82,26 @@ action :create do
     user 'root'
   end
 
-  portrange = 'net.inet.ip.portrange.reservedhigh=0'
-  portacl_policy = 'security.mac.portacl'
-  portacl = [
-    'enabled=1',
-    'suser_exempt=1',
-    "rules=uid:#{node['bsdznc']['uid']}:tcp:#{node['bsdznc']['irc_port']},"\
-      "uid:#{node['bsdznc']['uid']}:tcp:#{node['bsdznc']['web_port']}"
-  ]
-
-  execute "sysctl #{portrange}" do
-    user 'root'
-    action :run
+  sysctl_param 'net.inet.ip.portrange.reservedhigh' do
+    value 0
+    action :apply
   end
 
-  file '/etc/sysctl.conf' do
-    content(portacl
-            .map { |v| "#{portacl_policy}.#{v}" }.unshift(portrange).join("\n"))
-    user 'root'
-    group 'wheel'
-    mode '0644'
-    action :create
+  sysctl_param 'security.mac.portacl.enabled' do
+    value 1
+    action :apply
   end
 
-  portacl.each do |acl|
-    execute "sysctl #{portacl_policy}.#{acl}" do
-      user 'root'
-    end
+  sysctl_param 'security.mac.portacl.suser_exempt' do
+    value 1
+    action :apply
+  end
+
+  sysctl_param 'security.mac.portacl.rules' do
+    value ["uid:#{node['bsdznc']['uid']}:tcp:#{node['bsdznc']['irc_port']}",
+           "uid:#{node['bsdznc']['uid']}:tcp:#{node['bsdznc']['web_port']}"
+          ].join(',')
+    action :apply
   end
 
   service 'znc' do
@@ -140,29 +132,18 @@ action :destroy do
     action [:stop, :disable]
   end
 
-  # TODO: All of the sysctl configuration below should be refactored.
-  # See https://github.com/svanzoest-cookbooks/sysctl.
-
-  execute 'sysctl security.mac.portacl.enabled=0' do
-    user 'root'
-    action :run
+  sysctl_param 'security.mac.portacl.enabled' do
+    value 0
+    action [:apply, :remove]
   end
 
-  execute 'net.inet.ip.portrange.reservedhigh=1023' do
-    user 'root'
-    action :run
+  sysctl_param 'net.inet.ip.portrange.reservedhigh' do
+    value 1023
+    action :apply
   end
 
   file '/etc/rc.conf.d/mac_portacl.conf' do
     action :delete
-  end
-
-  file '/etc/sysctl.conf' do
-    content ''
-    user 'root'
-    group 'wheel'
-    mode '0644'
-    action :create
   end
 
   directory node['bsdznc']['config_path'] do

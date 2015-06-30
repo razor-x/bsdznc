@@ -10,6 +10,7 @@ version          '0.0.0'
 supports 'freebsd', '~> 10.1'
 
 depends 'certificate', '~> 1.0.0'
+depends 'sysctl', '~> 0.6.2'
 
 recipe 'bsdznc::default', 'Install, configure, and start the ZNC server.'
 

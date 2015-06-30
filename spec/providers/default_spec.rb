@@ -45,6 +45,27 @@ describe 'bsdznc_test::create' do
     end
   end
 
+  it 'enables and loads the portacl module' do
+    expect(chef_run).to create_directory('/etc/rc.conf.d')
+    expect(chef_run).to create_file('/etc/rc.conf.d/mac_portacl.conf')
+    expect(chef_run).to run_execute('kldload -n mac_portacl.ko')
+  end
+
+  it 'allows znc to bind to reserved ports' do
+    expect(chef_run).to(
+      apply_sysctl_param('net.inet.ip.portrange.reservedhigh')
+      .with(value: 0))
+    expect(chef_run).to(
+      apply_sysctl_param('security.mac.portacl.enabled')
+      .with(value: 1))
+    expect(chef_run).to(
+      apply_sysctl_param('security.mac.portacl.suser_exempt')
+      .with(value: 1))
+    expect(chef_run).to(
+      apply_sysctl_param('security.mac.portacl.rules')
+      .with(value: 'uid:194:tcp:194,uid:194:tcp:443'))
+  end
+
   it 'enables znc' do
     expect(chef_run).to enable_service('znc')
   end
@@ -93,6 +114,20 @@ describe 'bsdznc_test::destroy' do
   it 'stops and disables znc' do
     expect(chef_run).to disable_service('znc')
     expect(chef_run).to stop_service('znc')
+  end
+
+  it 'returns the portacl rules to default' do
+    expect(chef_run).to(
+      apply_sysctl_param('security.mac.portacl.enabled')
+      .with(value: 0))
+    expect(chef_run).to(
+      apply_sysctl_param('net.inet.ip.portrange.reservedhigh')
+      .with(value: 1023))
+    expect(chef_run).to remove_sysctl_param('security.mac.portacl.enabled')
+  end
+
+  it 'disables the portacl module' do
+    expect(chef_run).to delete_file('/etc/rc.conf.d/mac_portacl.conf')
   end
 
   it 'removes the znc user and group' do

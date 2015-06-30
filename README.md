@@ -58,6 +58,7 @@ and is incompatible with any other cookbook that modifies this file.
 ### Cookbooks:
 
 * certificate (~> 1.0.0)
+* sysctl (~> 0.6.2)
 
 ## Attributes
 
