@@ -28,12 +28,12 @@ action :create do
     action :install
   end
 
-  user 'znc' do
+  user new_resource.user do
     system true
     action :create
   end
 
-  group 'znc' do
+  group new_resource.group do
     system true
     action :create
   end
@@ -46,15 +46,15 @@ action :stop do
 end
 
 action :destroy do
+  user new_resource.user do
+    action :remove
+  end
+
+  group new_resource.group do
+    action :remove
+  end
+
   package 'znc' do
-    action :remove
-  end
-
-  user 'znc' do
-    action :remove
-  end
-
-  group 'znc' do
     action :remove
   end
 end

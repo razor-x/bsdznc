@@ -48,6 +48,8 @@ Include the default recipe.
 #### Attribute Parameters
 
 - name: the name of the znc server.
+- user: the user to run the ZNC server under. Defaults to <code>"znc"</code>.
+- group: the group to run the ZNC server under. Defaults to <code>"znc"</code>.
 
 ## Development and Testing
 
