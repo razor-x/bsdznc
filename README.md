@@ -61,16 +61,16 @@ all server and user settings configured through the web admin.
 
 Attribute | Description | Default | Choices
 ----------|-------------|---------|--------
-`node['bsdznc']['user']` | `` | "znc" |
-`node['bsdznc']['group']` | `` | "znc" |
-`node['bsdznc']['uid']` | `` | "194" |
-`node['bsdznc']['gid']` | `` | "194" |
-`node['bsdznc']['znc_version']` | `` | "1.6.0" |
-`node['bsdznc']['config_path']` | `` | "/usr/local/etc/znc" |
-`node['bsdznc']['cert_file']` | `` | "znc.pem" |
-`node['bsdznc']['irc_port']` | `` | "194" |
-`node['bsdznc']['web_port']` | `` | "443" |
-`node['bsdznc']['uri_prefix']` | `` | "/" |
+`node['bsdznc']['user']` | `User to run znc as.` | "znc" |
+`node['bsdznc']['group']` | `Group to run znc as.` | "znc" |
+`node['bsdznc']['uid']` | `User id for the znc user.` | 194 |
+`node['bsdznc']['gid']` | `Group id for the znc group.` | 194 |
+`node['bsdznc']['version']` | `ZNC version to use for the default config.` | "1.6.0" |
+`node['bsdznc']['config_path']` | `Path to the ZNC configuration directory.` | "/usr/local/etc/znc" |
+`node['bsdznc']['cert_file']` | `SSL certificate filename.` | "znc.pem" |
+`node['bsdznc']['irc_port']` | `Port to listen on for IRC connections.` | 194 |
+`node['bsdznc']['web_port']` | `Port to listen on for https connections.` | 443 |
+`node['bsdznc']['uri_prefix']` | `Prefix to serve the web admin under.` | "/" |
 
 ## Recipes
 
