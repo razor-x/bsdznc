@@ -30,6 +30,8 @@ action :create do
 
   user node['bsdznc']['user'] do
     uid node['bsdznc']['uid']
+    home '/nonexistent'
+    shell '/usr/sbin/nologin'
     system true
     action :create
   end
