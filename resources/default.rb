@@ -20,10 +20,11 @@
 
 =begin
 #<
-@action create create and start the znc server.
+@action create create the znc server.
 @action start start the znc server.
 @action stop stop the znc server.
-@action destroy destroy the znc server.
+@action restart restart the znc server.
+@action destroy stop and destroy the znc server.
 @action nothing do nothing.
 @attribute name the name of the znc server.
 @attribute user the user to run the ZNC server under.
@@ -32,7 +33,7 @@
 =end
 
 default_action :create
-actions :create, :start, :stop, :destroy
+actions :create, :start, :stop, :restart, :destroy
 
 attribute :name, kind_of: String, required: true, name_attribute: true
 attribute :user, kind_of: String, default: 'znc'

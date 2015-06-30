@@ -1,5 +1,5 @@
 Version = <%= node['bsdznc']['znc_version'] %>
-SSLCertFile = <%= node['bsdznc']['cert_file'] %>
+SSLCertFile = <%= node['bsdznc']['cert_path'] %>/<%= node['bsdznc']['cert_file'] %>
 LoadModule = webadmin
 
 <Listener listener0>

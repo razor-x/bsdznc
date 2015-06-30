@@ -18,5 +18,16 @@
 #
 
 bsdznc 'default' do
+  user 'znc'
+  group 'znc'
   action :create
+  subscribes :restart, 'certificate_manage[znc]'
+end
+
+certificate_manage 'znc' do
+  cert_path node['bsdznc']['cert_path']
+  cert_file node['bsdznc']['cert_file']
+  combined_file true
+  owner 'znc'
+  group 'znc'
 end

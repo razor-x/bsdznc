@@ -45,9 +45,8 @@ describe 'bsdznc_test::create' do
     end
   end
 
-  it 'enables and starts znc' do
+  it 'enables znc' do
     expect(chef_run).to enable_service('znc')
-    expect(chef_run).to start_service('znc')
   end
 end
 
@@ -73,6 +72,18 @@ describe 'bsdznc_test::stop' do
   end
 end
 
+describe 'bsdznc_test::restart' do
+  let(:chef_run) do
+    ChefSpec::ServerRunner.new(step_into: ['bsdznc'])
+      .converge(described_recipe)
+  end
+
+  it 'stops and starts znc' do
+    expect(chef_run).to stop_service('znc')
+    expect(chef_run).to start_service('znc')
+  end
+end
+
 describe 'bsdznc_test::destroy' do
   let(:chef_run) do
     ChefSpec::ServerRunner.new(step_into: ['bsdznc'])
@@ -81,7 +92,7 @@ describe 'bsdznc_test::destroy' do
 
   it 'stops and disables znc' do
     expect(chef_run).to disable_service('znc')
-    expect(chef_run).to start_service('znc')
+    expect(chef_run).to stop_service('znc')
   end
 
   it 'removes the znc user and group' do

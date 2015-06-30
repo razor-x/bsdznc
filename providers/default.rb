@@ -58,7 +58,7 @@ action :create do
   end
 
   service 'znc' do
-    action [:enable, :start]
+    action :enable
   end
 end
 
@@ -71,6 +71,12 @@ end
 action :stop do
   service 'znc' do
     action :stop
+  end
+end
+
+action :restart do
+  service 'znc' do
+    action [:stop, :start]
   end
 end
 

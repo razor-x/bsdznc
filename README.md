@@ -12,6 +12,16 @@ FreeBSD ZNC server.
 ### Usage
 
 Include either the default or znc recipe.
+See the recipe specific instructions below for
+the data bags required to use each recipe.
+
+For more control, use the LWRP,
+
+```ruby
+bsdznc 'default' do
+  action [:create, :start]
+end
+```
 
 Access the web admin at `https://hostname/`.
 
@@ -29,6 +39,7 @@ This should be changed immediately.
 ### Cookbooks:
 
 * cafe-core (~> 0.0.1)
+* certificate (~> 1.0.0)
 
 ## Attributes
 
@@ -36,7 +47,8 @@ Attribute | Description | Default | Choices
 ----------|-------------|---------|--------
 `node['bsdznc']['znc_version']` | `` | "1.6.0" |
 `node['bsdznc']['config_path']` | `` | "/usr/local/etc/znc" |
-`node['bsdznc']['cert_file']` | `` | "/usr/local/etc/znc/znc.pem" |
+`node['bsdznc']['cert_path']` | `` | "/usr/local/etc/znc" |
+`node['bsdznc']['cert_file']` | `` | "znc.pem" |
 `node['bsdznc']['irc_port']` | `` | "6667" |
 `node['bsdznc']['web_port']` | `` | "443" |
 `node['bsdznc']['uri_prefix']` | `` | "/" |
@@ -56,9 +68,10 @@ Attribute | Description | Default | Choices
 
 #### Actions
 
-- create: create and start the znc server. Default action.
-- destroy: destroy the znc server.
+- create: create the znc server. Default action.
+- destroy: stop and destroy the znc server.
 - nothing: do nothing.
+- restart: restart the znc server.
 - start: start the znc server.
 - stop: stop the znc server.
 
