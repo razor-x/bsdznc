@@ -1,21 +1,17 @@
 require 'spec_helper'
 
 describe 'bsdznc::default' do
-  let(:chef_run) do
-    ChefSpec::ServerRunner.new do |_, server|
-      server.create_data_bag('users', 'sudoroot' => {})
-    end.converge(described_recipe)
+  let(:chef_run) { ChefSpec::ServerRunner.new.converge(described_recipe) }
+
+  it 'creates the znc server' do
+    expect(chef_run).to configure_znc('default')
   end
 
-  before(:each) do
-    stub_command('which sudo')
+  it 'creates the ssl certificate' do
+    expect(chef_run).to create_certificate_manage('znc')
   end
 
-  it 'includes the cafe-core::default recipe' do
-    expect(chef_run).to include_recipe('cafe-core::default')
-  end
-
-  it 'includes the bsdznc::znc recipe' do
-    expect(chef_run).to include_recipe('bsdznc::znc')
+  it 'starts the znc server' do
+    expect(chef_run).to start_znc('default')
   end
 end

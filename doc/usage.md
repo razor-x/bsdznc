@@ -1,9 +1,7 @@
 ### Usage
 
-Include either the `bsdznc::default` recipe
-or the`bsdznc::znc` recipe.
-
-Alternatively, use the LWRP, e.g.,
+Include either the `bsdznc::default` recipe,
+or use the LWRP directly, e.g.,
 
 ```ruby
 bsdznc 'default' do
@@ -18,9 +16,9 @@ end
 ```
 
 You must provide a valid SSL certificate.
-If you use either recipe, you must create an encrypted data bag under
-`certificates` with id `znc`.
-See the [certificate cookbook].
+If you use the default recipe, this is handled by the [certificate cookbook].
+You must have an encrypted data bag under `certificates` with id `znc`.
+See the [certificate cookbook] docs for how to create this.
 
 Access the web admin at `https://example.com/`.
 The ZNC server will listen for IRC connections on port `194`.

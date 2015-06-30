@@ -17,9 +17,19 @@
 # limitations under the License.
 #
 
-# TODO: Remove this override when this issue is resolved:
-# https://github.com/gmiranda23/ntp/issues/112
-node.default['ntp']['var_owner'] = 'root'
+bsdznc 'default' do
+  action :create
+  subscribes :restart, 'certificate_manage[znc]'
+end
 
-include_recipe 'cafe-core::default'
-include_recipe 'bsdznc::znc'
+certificate_manage 'znc' do
+  cert_path node['bsdznc']['cert_path']
+  cert_file node['bsdznc']['cert_file']
+  combined_file true
+  owner node['bsdznc']['user']
+  group node['bsdznc']['group']
+end
+
+bsdznc 'default' do
+  action :start
+end

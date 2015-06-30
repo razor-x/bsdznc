@@ -11,10 +11,8 @@ FreeBSD ZNC server.
 
 ### Usage
 
-Include either the `bsdznc::default` recipe
-or the`bsdznc::znc` recipe.
-
-Alternatively, use the LWRP, e.g.,
+Include either the `bsdznc::default` recipe,
+or use the LWRP directly, e.g.,
 
 ```ruby
 bsdznc 'default' do
@@ -29,9 +27,9 @@ end
 ```
 
 You must provide a valid SSL certificate.
-If you use either recipe, you must create an encrypted data bag under
-`certificates` with id `znc`.
-See the [certificate cookbook].
+If you use the default recipe, this is handled by the [certificate cookbook].
+You must have an encrypted data bag under `certificates` with id `znc`.
+See the [certificate cookbook] docs for how to create this.
 
 Access the web admin at `https://example.com/`.
 The ZNC server will listen for IRC connections on port `194`.
@@ -59,7 +57,6 @@ and is incompatible with any other cookbook that modifies this file.
 
 ### Cookbooks:
 
-* cafe-core (~> 0.0.1)
 * certificate (~> 1.0.0)
 
 ## Attributes
@@ -80,8 +77,7 @@ Attribute | Description | Default | Choices
 
 ## Recipes
 
-* bsdznc::default - Setup the FreeBSD ZNC server with core services.
-* bsdznc::znc - Setup the FreeBSD ZNC server.
+* bsdznc::default - Install, configure, and start the ZNC server.
 
 ## Resources
 

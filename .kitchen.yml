@@ -20,16 +20,5 @@ suites:
     driver:
       network:
         - ["private_network", {ip: "10.10.12.100"}]
-    attributes:
-      authorization:
-        sudo:
-          users: [vagrant]
     run_list:
       - recipe[bsdznc::default]
-
-  - name: znc
-    driver:
-      network:
-        - ["private_network", {ip: "10.10.12.101"}]
-    run_list:
-      - recipe[bsdznc::znc]
