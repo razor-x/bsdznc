@@ -24,7 +24,6 @@ default['bsdznc']['gid'] = 194
 
 default['bsdznc']['znc_version'] = '1.6.0'
 default['bsdznc']['config_path'] = '/usr/local/etc/znc'
-default['bsdznc']['cert_path'] = '/usr/local/etc/znc'
 default['bsdznc']['cert_file'] = 'znc.pem'
 default['bsdznc']['irc_port'] = 194
 default['bsdznc']['web_port'] = 443

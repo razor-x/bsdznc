@@ -23,7 +23,7 @@ bsdznc 'default' do
 end
 
 certificate_manage 'znc' do
-  cert_path node['bsdznc']['cert_path']
+  cert_path node['bsdznc']['config_path']
   cert_file node['bsdznc']['cert_file']
   combined_file true
   owner node['bsdznc']['user']
