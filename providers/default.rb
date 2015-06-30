@@ -61,6 +61,9 @@ action :create do
     end
   end
 
+  # TODO: All of the sysctl configuration below should be refactored.
+  # See https://github.com/svanzoest-cookbooks/sysctl.
+
   directory '/etc/rc.conf.d' do
     user 'root'
     group 'wheel'
@@ -80,8 +83,7 @@ action :create do
     user 'root'
   end
 
-  portrange = \
-    'net.inet.ip.portrange.reservedlow=0 net.inet.ip.portrange.reservedhigh=0'
+  portrange = 'net.inet.ip.portrange.reservedhigh=0'
   portacl_policy = 'security.mac.portacl'
   portacl = [
     'enabled=1',
@@ -138,7 +140,15 @@ action :destroy do
     action [:stop, :disable]
   end
 
+  # TODO: All of the sysctl configuration below should be refactored.
+  # See https://github.com/svanzoest-cookbooks/sysctl.
+
   execute 'sysctl security.mac.portacl.enabled=0' do
+    user 'root'
+    action :run
+  end
+
+  execute 'net.inet.ip.portrange.reservedhigh=1023' do
     user 'root'
     action :run
   end
