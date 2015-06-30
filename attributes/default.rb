@@ -17,10 +17,15 @@
 # limitations under the License.
 #
 
+default['bsdznc']['user'] = 'znc'
+default['bsdznc']['group'] = 'znc'
+default['bsdznc']['uid'] = 194
+default['bsdznc']['gid'] = 194
+
 default['bsdznc']['znc_version'] = '1.6.0'
 default['bsdznc']['config_path'] = '/usr/local/etc/znc'
 default['bsdznc']['cert_path'] = '/usr/local/etc/znc'
 default['bsdznc']['cert_file'] = 'znc.pem'
-default['bsdznc']['irc_port'] = 6667
+default['bsdznc']['irc_port'] = 194
 default['bsdznc']['web_port'] = 443
 default['bsdznc']['uri_prefix'] = '/'

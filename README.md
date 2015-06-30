@@ -45,11 +45,15 @@ This should be changed immediately.
 
 Attribute | Description | Default | Choices
 ----------|-------------|---------|--------
+`node['bsdznc']['user']` | `` | "znc" |
+`node['bsdznc']['group']` | `` | "znc" |
+`node['bsdznc']['uid']` | `` | "194" |
+`node['bsdznc']['gid']` | `` | "194" |
 `node['bsdznc']['znc_version']` | `` | "1.6.0" |
 `node['bsdznc']['config_path']` | `` | "/usr/local/etc/znc" |
 `node['bsdznc']['cert_path']` | `` | "/usr/local/etc/znc" |
 `node['bsdznc']['cert_file']` | `` | "znc.pem" |
-`node['bsdznc']['irc_port']` | `` | "6667" |
+`node['bsdznc']['irc_port']` | `` | "194" |
 `node['bsdznc']['web_port']` | `` | "443" |
 `node['bsdznc']['uri_prefix']` | `` | "/" |
 
@@ -74,12 +78,6 @@ Attribute | Description | Default | Choices
 - restart: restart the znc server.
 - start: start the znc server.
 - stop: stop the znc server.
-
-#### Attribute Parameters
-
-- name: the name of the znc server.
-- user: the user to run the ZNC server under. Defaults to <code>"znc"</code>.
-- group: the group to run the ZNC server under. Defaults to <code>"znc"</code>.
 
 ## Development and Testing
 

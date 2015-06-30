@@ -28,19 +28,21 @@ action :create do
     action :install
   end
 
-  user new_resource.user do
+  user node['bsdznc']['user'] do
+    uid node['bsdznc']['uid']
     system true
     action :create
   end
 
-  group new_resource.group do
+  group node['bsdznc']['group'] do
+    gid node['bsdznc']['gid']
     system true
     action :create
   end
 
   directory "#{node['bsdznc']['config_path']}/configs" do
-    user new_resource.user
-    group new_resource.group
+    user node['bsdznc']['user']
+    group node['bsdznc']['group']
     mode '0750'
     recursive true
     action :create
@@ -48,8 +50,8 @@ action :create do
 
   template "#{node['bsdznc']['config_path']}/configs/znc.conf" do
     source 'znc.conf.erb'
-    user new_resource.user
-    group new_resource.group
+    user node['bsdznc']['user']
+    group node['bsdznc']['group']
     mode '0640'
     action :create
     not_if do
@@ -89,11 +91,11 @@ action :destroy do
     action :delete
   end
 
-  user new_resource.user do
+  user node['bsdznc']['user'] do
     action :remove
   end
 
-  group new_resource.group do
+  group node['bsdznc']['group'] do
     action :remove
   end
 
