@@ -25,5 +25,8 @@ suites:
       - recipe[bsdznc::default]
 
   - name: znc
+    driver:
+      network:
+        - ["private_network", {ip: "10.10.12.100"}]
     run_list:
       - recipe[bsdznc::znc]
