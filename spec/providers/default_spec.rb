@@ -51,7 +51,7 @@ describe 'bsdznc_test::create' do
 end
 
 describe 'bsdznc_test::start' do
-  let(:chef_run) do
+  cached(:chef_run) do
     ChefSpec::ServerRunner.new(step_into: ['bsdznc'])
       .converge(described_recipe)
   end
@@ -62,7 +62,7 @@ describe 'bsdznc_test::start' do
 end
 
 describe 'bsdznc_test::stop' do
-  let(:chef_run) do
+  cached(:chef_run) do
     ChefSpec::ServerRunner.new(step_into: ['bsdznc'])
       .converge(described_recipe)
   end
@@ -73,7 +73,7 @@ describe 'bsdznc_test::stop' do
 end
 
 describe 'bsdznc_test::restart' do
-  let(:chef_run) do
+  cached(:chef_run) do
     ChefSpec::ServerRunner.new(step_into: ['bsdznc'])
       .converge(described_recipe)
   end
@@ -85,7 +85,7 @@ describe 'bsdznc_test::restart' do
 end
 
 describe 'bsdznc_test::destroy' do
-  let(:chef_run) do
+  cached(:chef_run) do
     ChefSpec::ServerRunner.new(step_into: ['bsdznc'])
       .converge(described_recipe)
   end
