@@ -10,4 +10,8 @@ describe 'bsdznc::znc' do
   it 'creates the ssl certificate' do
     expect(chef_run).to create_certificate_manage('znc')
   end
+
+  it 'starts the znc server' do
+    expect(chef_run).to start_znc('default')
+  end
 end

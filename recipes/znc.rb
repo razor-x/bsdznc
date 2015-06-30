@@ -29,3 +29,7 @@ certificate_manage 'znc' do
   owner node['bsdznc']['user']
   group node['bsdznc']['group']
 end
+
+bsdznc 'default' do
+  action :start
+end
