@@ -37,15 +37,52 @@ action :create do
     system true
     action :create
   end
+
+  directory "#{node['bsdznc']['config_path']}/configs" do
+    user new_resource.user
+    group new_resource.group
+    mode '0750'
+    recursive true
+    action :create
+  end
+
+  template "#{node['bsdznc']['config_path']}/configs/znc.conf" do
+    source 'znc.conf.erb'
+    user new_resource.user
+    group new_resource.group
+    mode '0640'
+    action :create
+    not_if do
+      ::File.exist?("#{node['bsdznc']['config_path']}/configs/znc.conf")
+    end
+  end
+
+  service 'znc' do
+    action [:enable, :start]
+  end
 end
 
 action :start do
+  service 'znc' do
+    action :start
+  end
 end
 
 action :stop do
+  service 'znc' do
+    action :stop
+  end
 end
 
 action :destroy do
+  service 'znc' do
+    action [:stop, :disable]
+  end
+
+  directory node['bsdznc']['config_path'] do
+    action :delete
+  end
+
   user new_resource.user do
     action :remove
   end

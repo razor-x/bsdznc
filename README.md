@@ -11,7 +11,13 @@ FreeBSD ZNC server.
 
 ### Usage
 
-Include the default recipe.
+Include either the default or znc recipe.
+
+Access the web admin at `https://hostname/`.
+
+A minimal `znc.conf` will be created
+with user `admin` and password `password`.
+This should be changed immediately.
 
 
 ## Requirements
@@ -23,6 +29,17 @@ Include the default recipe.
 ### Cookbooks:
 
 * cafe-core (~> 0.0.1)
+
+## Attributes
+
+Attribute | Description | Default | Choices
+----------|-------------|---------|--------
+`node['bsdznc']['znc_version']` | `` | "1.6.0" |
+`node['bsdznc']['config_path']` | `` | "/usr/local/etc/znc" |
+`node['bsdznc']['cert_file']` | `` | "/usr/local/etc/znc/znc.pem" |
+`node['bsdznc']['irc_port']` | `` | "6667" |
+`node['bsdznc']['web_port']` | `` | "443" |
+`node['bsdznc']['uri_prefix']` | `` | "/" |
 
 ## Recipes
 

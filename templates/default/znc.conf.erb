@@ -1,0 +1,26 @@
+Version = <%= node['bsdznc']['znc_version'] %>
+SSLCertFile = <%= node['bsdznc']['cert_file'] %>
+LoadModule = webadmin
+
+<Listener listener0>
+  AllowIRC = true
+  AllowWeb = false
+  IPv4 = true
+  IPv6 = true
+  Port = <%= node['bsdznc']['irc_port'] %>
+  SSL = true
+</Listener>
+
+<Listener listener1>
+  AllowIRC = false
+  AllowWeb = true
+  IPv4 = true
+  IPv6 = true
+  Port = <%= node['bsdznc']['web_port'] %>
+  SSL = true
+  URIPrefix = <%= node['bsdznc']['uri_prefix'] %>
+</Listener>
+
+<User admin>
+  Pass = sha256#cf2f5aeb1290b53ea15c76a3e3f63e863d5d7626c4df6006da31eb7487fd1051#;WodIE_;v7_a+V8nrUIY#
+</User>
