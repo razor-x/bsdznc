@@ -43,9 +43,6 @@ it will not be touched otherwise.
 You should backup this file regularly as it contains
 all server and user settings configured through the web admin.
 
-Note that this cookbook modifies `/etc/sysctl.conf`,
-and is incompatible with any other cookbook that modifies this file.
-
 [certificate cookbook]: https://supermarket.chef.io/cookbooks/certificate
 
 
