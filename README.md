@@ -51,7 +51,7 @@ all server and user settings configured through the web admin.
 
 ### Platforms
 
-* Freebsd (~> 10.1)
+* freebsd (~> 10.1)
 
 ### Cookbooks:
 
@@ -87,7 +87,8 @@ Attribute | Description | Default | Choices
 
 #### Actions
 
-- create: create the znc server. Default action.
+- [:create]:  Default action.
+- create: create the znc server.
 - destroy: stop and destroy the znc server.
 - nothing: do nothing.
 - restart: restart the znc server.
